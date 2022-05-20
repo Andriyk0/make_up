@@ -1,0 +1,106 @@
+.register{
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 40px;
+  font-family: Montserrat,sans-serif;
+}
+.register_head{
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin: 40px 0 48px;
+  font-weight: 400;
+}
+.registerForm{
+  border: 3px solid #f4f3f5;
+  color: #333;
+  padding: 28px 35px 41px;
+}
+.register_column{
+  width: 33.33333%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 40px 0 0;
+}
+.register_column h3{
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0 0 27px;
+}
+.register_row{
+  width: 100%;
+}
+.checkbox{
+  display: flex;
+  padding-top: 11px;
+}
+.logInBTN{
+  width: 100%;
+  display: block;
+  margin: 39px 0 0;
+  background-color: #792c9b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 14px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 2px;
+}
+
+
+@media (max-width: 850px) {
+
+  .register_column{
+    width: 100%;
+    display: block;
+    padding: 0;
+  }
+  .register_column h3{
+    font-size: 25px;
+  }
+  .mat-form-field{
+    font-size: 20px;
+    padding: 0 10px;
+  }
+  .logInBTN{
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 580px) {
+  .register{
+    padding: 0;
+  }
+  .register_head{
+    margin: 0;
+    font-size: 20px;
+  }
+  .register_column{
+    font-size: 23px;
+    margin: 0;
+  }
+  .registerForm{
+    padding: 9px 9px 41px;
+    text-align: center;
+  }
+  .mat-form-field{
+    font-size: 12px;
+    padding: 0 10px;
+    margin: -7px;
+  }
+  .checkbox{
+    input{
+      width: 21px;
+      margin: 0;
+    }
+    label{
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+
+}
+

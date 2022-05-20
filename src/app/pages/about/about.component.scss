@@ -1,0 +1,28 @@
+.layout {
+  padding: 0 40px;
+  max-width: 1600px;
+  margin: auto;
+  font-family: Montserrat,sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+.page-header {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin: 20px 0 48px;
+  position: relative;
+}
+.about{
+  display: flex;
+}
+.about__content {
+  width: 60%;
+  padding: 0 40px 0 0;
+}
+.about__sidebar {
+  border: 2px solid #f4f3f5;
+  padding: 30px 38px 16px;
+  margin: 0 0 20px;
+}

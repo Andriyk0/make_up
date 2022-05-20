@@ -1,0 +1,70 @@
+<form class="example-form" [formGroup]="presentForm" (ngSubmit)="createPresent()">
+  <div class="block-of-2">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Name:</mat-label>
+      <input formControlName="name" matInput>
+      <mat-error *ngIf="presentForm.controls['name'].hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Path:</mat-label>
+      <input formControlName="path" matInput>
+      <mat-error *ngIf="presentForm.controls['path'].hasError('required')">
+        Path is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="block-of-1">
+    <mat-form-field class="example-full-width" style="width: 100%" appearance="outline">
+      <mat-label>Description:</mat-label>
+      <textarea style="width: 100%" formControlName="description" matInput></textarea>
+      <mat-error *ngIf="presentForm.controls['description'].hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="block-of-2">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Sex:</mat-label>
+      <input formControlName="sex" matInput>
+      <mat-error *ngIf="presentForm.controls['sex'].hasError('required')">
+        Sex is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Country:</mat-label>
+      <input formControlName="country" matInput>
+      <mat-error *ngIf="presentForm.controls['country'].hasError('required')">
+        Country is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="block-of-2">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Use:</mat-label>
+      <input formControlName="use" matInput>
+      <mat-error *ngIf="presentForm.controls['use'].hasError('required')">
+        Use is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Price:</mat-label>
+      <input formControlName="price" matInput type="number">
+      <mat-error *ngIf="presentForm.controls['price'].hasError('required')">
+        Price is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <ng-container *ngIf="!isUploaded">
+    <input type="file" (change)="upload($event)">
+    <mat-progress-bar mode="determinate" [value]="uploadPercent"></mat-progress-bar>
+  </ng-container>
+  <ng-container *ngIf="isUploaded">
+    <img [src]="valueByControl('imagePath')" alt="" width="120px" height="120px">
+    <i class="uil uil-trash-alt" (click)="deleteImage()"></i>
+  </ng-container>
+  <hr>
+  <button mat-button mat-dialog-close>Close</button>
+  <button [disabled]="presentForm.invalid" mat-raised-button color="primary" type="submit">Create</button>
+</form>

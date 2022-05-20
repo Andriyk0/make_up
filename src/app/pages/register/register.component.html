@@ -1,0 +1,86 @@
+<div class="register">
+  <h1 class="register_head">Реєстрація нового користувача</h1>
+  <form class="registerForm" [formGroup]="createUserForm" (ngSubmit)="createUser()">
+    <div class="register_column">
+      <h3>Особисті дані</h3>
+      <div class="register_row" >
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Ваше ім'я</mat-label>
+          <input type="text" formControlName="firstName" matInput >
+          <mat-error *ngIf="createUserForm.controls['firstName'].hasError('required')">
+            Ім'я введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Ваше фамілія</mat-label>
+          <input type="text" formControlName="secondName" matInput >
+          <mat-error *ngIf="createUserForm.controls['secondName'].hasError('required')">
+            Фамілія введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Дата народження</mat-label>
+          <input matInput mask="d0/M0/0000" [dropSpecialCharacters]="false" placeholder="dd/mm/yyyy" formControlName="dateOfBirth" matInput>
+          <mat-error *ngIf="createUserForm.controls['dateOfBirth'].hasError('required')">
+            Дату народження введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="register_column">
+      <h3>&nbsp;</h3>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Телефон</mat-label>
+          <input class="callback_name" formControlName="phone" matInput [dropSpecialCharacters]="false" prefix="+38" [mask]="'(000) 00-00-000'"  value="">
+          <mat-error *ngIf="createUserForm.controls['phone'].hasError('required')">
+            Телефон введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Е-mail</mat-label>
+          <input [textMask]="{mask: emailMask}" formControlName="email" matInput placeholder="example@domain.com">
+          <mat-error *ngIf="createUserForm.controls['email'].hasError('required')">
+            E-mail введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row checkbox">
+        <input type="checkbox" style="width: 10px">
+        <label style="margin: 7px 0 0 7px">Отримувати повідомлення про новини,знижки,акції</label>
+      </div>
+    </div>
+    <div class="register_column">
+      <h3>Пароль</h3>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Пароль</mat-label>
+          <input type="password" formControlName="password" matInput>
+          <mat-error *ngIf="createUserForm.controls['password'].hasError('required')">
+            Пароль введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row">
+        <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+          <mat-label>Повторіть пароль</mat-label>
+          <input  type="password" formControlName="repeatPassword" matInput>
+          <mat-error *ngIf="createUserForm.controls['repeatPassword'].hasError('required')">
+            Пароль введено <strong>некоректно</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="register_row">
+        <button class="logInBTN" [disabled] = "createUserForm.invalid" type="submit">Зареєструватись</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

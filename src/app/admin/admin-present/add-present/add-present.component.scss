@@ -1,0 +1,10 @@
+.block-of-2{
+  display: flex;
+  justify-content: space-between;
+  .mat-form-field {
+    width: 100%;
+    &:last-child{
+      margin: 0 0 0 10px;
+    }
+  }
+}

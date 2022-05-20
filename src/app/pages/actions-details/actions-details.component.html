@@ -1,0 +1,17 @@
+<div class="action-details-conteiner">
+  <h1>Акція {{ currentAction?.name }}</h1>
+  <div class="action-details-cart">
+    <div class="action-details-cart-top">
+      <div class="action-details-cart-img">
+        <img [src]="currentAction?.imagePath" width="100%" alt="">
+      </div>
+      <div class="action-details-cart-text">
+        <h1>{{ currentAction?.name }}</h1>
+        <p><b>{{ currentAction?.description }}</b></p>
+        <p>{{ currentAction?.attention }}</p>
+      </div>
+    </div>
+    <div class="action-details-cart-bottom">
+    </div>
+  </div>
+</div>

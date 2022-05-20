@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "make-up-7c78d",
+    "make-up": "make-up-7c78d"
+  },
+  "targets": {
+    "make-up-7c78d": {
+      "hosting": {
+        "make-up": [
+          "make-up-7c78d"
+        ]
+      }
+    }
+  }
+}

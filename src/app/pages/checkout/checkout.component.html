@@ -1,0 +1,145 @@
+<ng-container *ngIf="basket.length>0; else empty">
+  <div class="order-conteiner">
+    <h1>Оформлення замовлення</h1>
+    <div class="order">
+      <div class="order-left">
+        <div [ngClass]="{'visible':visible}" class="order-left-top" >
+          <div style="display: flex;cursor: pointer">
+            <span class="one">1</span>
+            <p  style="color: #792c9b;padding: 6px 0 0 6px">Особисті дані</p>
+          </div>
+          <div (click)="visibilityOff()"  style="display: flex;cursor: pointer">
+            <span class="two">2</span>
+            <p style="padding: 6px 0 0 6px">Інформація про доставку</p>
+          </div>
+        </div>
+        <div [ngClass]="{'invisible':visibility}"  class="order-left-top">
+          <div (click)="visibilityOn()" style="display: flex;cursor: pointer">
+            <span class="two">1</span>
+            <p style="padding: 6px 0 0 6px">Особисті дані</p>
+          </div>
+          <div style="display: flex;cursor: pointer">
+            <span class="one">2</span>
+            <p style="color: #792c9b;padding: 6px 0 0 6px">Інформація про доставку</p>
+          </div>
+        </div>
+        <form class="example-form" [formGroup]="orderForm" (ngSubmit)="createOrder()">
+        <div class="order-left-bottom">
+          <div [ngClass]="{'visible':visible}"  class="order-first">
+              <div class="block-of-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Імя</mat-label>
+                  <input formControlName="firstName" matInput>
+                  <mat-error *ngIf="orderForm.controls['firstName'].hasError('required')">
+                    Імя введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Фамілія</mat-label>
+                  <input formControlName="secondName" matInput>
+                  <mat-error *ngIf="orderForm.controls['secondName'].hasError('required')">
+                    Фамілія введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="block-of-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Телфон</mat-label>
+                  <input formControlName="phone" [dropSpecialCharacters]="false" matInput prefix="+38" [mask]="'(000) 00-00-000'">
+                  <mat-error *ngIf="orderForm.controls['phone'].hasError('required')">
+                    Телфон введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>E-mail</mat-label>
+                  <input formControlName="email" matInput>
+                  <mat-error *ngIf="orderForm.controls['email'].hasError('required')">
+                    E-mail введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            <input (click)="visibilityOff()" class="nextBTN" type="button" value="Продовжити">
+          </div>
+          <div [ngClass]="{'invisible':visibility}" class="order-second" >
+              <div class="block-of-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Місто</mat-label>
+                  <input formControlName="city" matInput>
+                  <mat-error *ngIf="orderForm.controls['city'].hasError('required')">
+                    Місто введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Вулиця</mat-label>
+                  <input formControlName="street" matInput>
+                  <mat-error *ngIf="orderForm.controls['street'].hasError('required')">
+                    Вулиця введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="block-of-2">
+                <mat-form-field style="margin-right: 5px" class="example-full-width" appearance="outline">
+                  <mat-label>Дім</mat-label>
+                  <input formControlName="house" matInput>
+                  <mat-error *ngIf="orderForm.controls['house'].hasError('required')">
+                    Дім введено <strong>некоректно</strong>
+                  </mat-error>
+                </mat-form-field>
+                <div class="check-btn">
+                  <mat-checkbox class="example-margin"><p>Мне можно не звонить</p><p>для подтверждения заказа</p></mat-checkbox>
+                  <button class="orderBTN" [disabled]="orderForm.invalid"  mat-raised-button type="submit">Оформити замовлення</button>
+                </div>
+
+              </div>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="order-right">
+        <div class="order-right-head">
+          <h2>Ваш заказ</h2>
+          <a [routerLink]="['/']"><p>Продовжити покупки</p></a>
+        </div>
+        <hr style="height: 3px">
+        <div class="order-right-main">
+          <div *ngFor="let product of basket">
+            <div class="basket-product">
+              <div class="basketImg">
+                <img height="100%" [src]="product.imagePath" alt="">
+              </div>
+              <div>
+                <div class="basket-description">
+                  <h3>{{ product.name }}</h3>
+                  <p>{{ product.type }}</p>
+                </div>
+                <div class="basket-count">
+                  <p>
+                    <button (click)="productCount(product, false)">-</button>
+                    <input type="text" [value]="product.count">
+                    <button (click)="productCount(product, true)">+</button>
+                    <img (click)="deleteBasketProduct(product)" src="/assets/image/close.png" alt="">
+                  </p>
+                </div>
+              </div>
+              <div class="basket-price" >
+                <h3>{{ product.price * product.count }} ₴</h3>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <hr style="height: 3px">
+        <div class="order-right-bottom">
+          <p style="font-weight: bold;font-style: italic">Всього: {{ total }} ₴</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #empty>
+  <div class="checkoutEmpty">
+    <h1>У вас немає покупок!</h1>
+    <a [routerLink]="['/']">Продовжити покупки</a>
+  </div>
+
+</ng-template>

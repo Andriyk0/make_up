@@ -1,0 +1,13 @@
+<div class="product-conteiner">
+  <div class="product" *ngFor="let prod of products">
+    <div class="product-img">
+      <a [routerLink]="['/product/perfumery',prod.id]"> <img [src]="prod.imagePath" alt=""></a>
+    </div>
+    <a [routerLink]="['/product/perfumery',prod.id]"><h2>{{ prod.name }}</h2></a>
+      <h4 class="grey">{{ prod.type }}</h4>
+      <h4>{{ prod.size }}</h4>
+      <div style="height: 50px"></div>
+      <h2>{{ prod.price }}  ₴</h2>
+      <a><button (click)="addBasket(prod)" class="BuyBTN">Купити</button></a>
+  </div>
+</div>

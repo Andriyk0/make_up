@@ -1,0 +1,24 @@
+<button mat-raised-button (click)="openDialog()">Create new category</button>
+
+  <div class="admin-action">
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Path</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cat of categories">
+        <td class="bs">{{ cat.id }}</td>
+        <td class="bs">{{ cat.name }}</td>
+        <td class="bs">{{ cat.path }}</td>
+        <td><button class="editBTN" (click)="editCategory(cat)">Edit</button></td>
+        <td><button class="deleteBTN" (click)="deleteCategory(cat)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

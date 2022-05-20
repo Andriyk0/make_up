@@ -1,0 +1,161 @@
+<header>
+  <nav class="main-nav">
+    <input type="checkbox" id="check" />
+    <label for="check" class="menu-btn">
+      <img src="https://img.icons8.com/material-outlined/24/000000/menu--v3.png" alt="">
+    </label>
+    <a  *ngIf="!Mouseon" (mouseleave)="on()" class="logo">Безплатна доставка по Україні!</a>
+    <a  *ngIf="Mouseon" (mouseleave)="off()" class="logo">100% Оригінальна продукція!</a>
+    <ul class="navlinks">
+      <li><a [routerLink]="['actions']" style="border: none;color: white" class="actions">Акції</a></li>
+      <li><a [routerLink]="['online']">Прямий ефір</a></li>
+      <li><a [routerLink]="['beauty-club']">Beauty Club</a></li>
+      <li><a [routerLink]="['delivery-payment']">Доставка і Оплата</a></li>
+      <li><a [routerLink]="['article']">Статті</a></li>
+      <li><a [routerLink]="['about']">Про магазин</a></li>
+    </ul>
+    <div>
+      <a *ngIf="!isUserLogin && !isAdminLogin" class="singIn" (click)="signIn()">Вхід в кабінет</a>
+      <a *ngIf="isAdminLogin" [routerLink]="['admin']" class="singIn Admin">Адмін</a>
+      <div style="display: flex" *ngIf="isUserLogin">
+        <a [routerLink]="['profile']" class="singIn">Кабінет</a>
+      </div>
+
+    </div>
+
+  </nav>
+</header>
+<div class="box2">
+  <div class="header-contact">
+    <ul class="header-contact-list">
+      <li class="header-contact-list__item"><a href="tel:+380443740383" class="header-contact-list__link">(044) 374 03 83</a></li>
+      <li class="header-contact-list__item"><a href="tel:+380800507740" class="header-contact-list__link">0(800) 50 77 40</a></li>
+    </ul>
+    <div class="work-time">Ежедневно с 7:55 до 20:05</div>
+    <div class="button" (click)="showCallback()">Зворотній дзвінок</div>
+  </div>
+  <div class="box2_2">
+    <a [routerLink]="['/']"><img src="assets/image/make%20up.svg" alt=""></a>
+
+  </div>
+  <div class="box2_3">
+    <div style="cursor: pointer" [routerLink]="['checkout']">
+      <img src="assets/image/checkout.svg" alt="" class="checkout">
+      <span class="headerBasket">Корзина ({{ total }})</span>
+    </div>
+    <input type="search" [(ngModel)]="searchText" matInput placeholder="Более 249 000 товаров" >
+  </div>
+</div>
+
+<div class="box3">
+  <ul class="bottom_nav_links">
+    <li><a [routerLink]="['product/perfumery']">Парфумерія</a></li>
+    <li><a [routerLink]="['product/makeup']">Макіяж</a></li>
+    <li><a [routerLink]="['product/hair']">Волосся</a></li>
+    <li><a [routerLink]="['product/face']">Обличчя</a></li>
+    <li><a [routerLink]="['product/body_bath']">Тіло і ванна</a></li>
+    <li><a [routerLink]="['product/man']">Чоловікам</a></li>
+    <li><a [routerLink]="['product/accessories_appliances']">Аксесуари і техніка</a></li>
+    <li><a [routerLink]="['product/health_care']">Health & Care</a></li>
+    <li><a [routerLink]="['present']">Подарунки</a></li>
+  </ul>
+</div>
+<hr class="hr">
+
+
+<form class="callback" [formGroup]="callbackForm" (ngSubmit)="addCallback()" *ngIf="Callback">
+    <button (click)="closeCallBack()" class="callback_close" mat-button ><img src="/assets/image/close.png" alt=""></button>
+  <p>Ми перетелефонуємо вам самі!</p>
+    <input class="callback_name" formControlName="name" matInput placeholder="Ваше імя">
+    <input class="callback_name" formControlName="phone" matInput [dropSpecialCharacters]="false" prefix="+38" [mask]="'(000) 00-00-000'" placeholder="Телефон">
+    <textarea class="callback_text" formControlName="description" matInput placeholder="Текст повідомлення"></textarea>
+   <button class="callback_button" [disabled] = "callbackForm.invalid" type="submit">ВІДПРАВИТИ</button>
+
+</form>
+
+
+
+<form class="singInForm" *ngIf="showSignIn" [formGroup]="loginForm" (ngSubmit)="signInUser()">
+  <button (click)="closeCallBack()" class="callback_close" mat-button><img src="/assets/image/close.png" alt=""></button>
+  <h3>Вхід в особистий кабінет</h3>
+  <input class="callback_name" formControlName="email" matInput type="email" placeholder="E-mail">
+  <input class="callback_name" formControlName="password" matInput type="password" placeholder="Пароль">
+  <button class="callback_button" [disabled] = "loginForm.invalid" type="submit">Увійти</button>
+  <div class="singInForgot_Register">
+    <a (click)="forgotPassword()" style="cursor: pointer;text-decoration: underline">Забули пароль?</a>
+    <a [routerLink]="['register']" (click)="closeSignIn()">Реєстрація</a>
+  </div>
+</form>
+
+
+<form class="forgotPassword singInForm" *ngIf="showForgotPassword">
+  <button (click)="closeCallBack()" class="callback_close" mat-button ><img src="/assets/image/close.png" alt=""></button>
+  <h3>Відновлення пароля</h3>
+  <input class="callback_name" type="email" placeholder="E-mail">
+  <button class="callback_button">Відновити</button>
+</form>
+
+<div class="searchText" *ngIf="!searchProd">
+  <div class="product" *ngFor="let prod of products | search: searchText">
+    <div class="product-img">
+      <a [routerLink]="['/product/perfumery',prod.id]"> <img [src]="prod.imagePath" alt=""></a>
+    </div>
+    <a [routerLink]="['/product/perfumery',prod.id]"><h2>{{ prod.name }}</h2></a>
+    <h2>{{ prod.price }}₴</h2>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="headerTab">
+  <div class="header-top" [routerLink]="['delivery-payment']"><h1>Безкоштовна доставка по Україні!</h1></div>
+  <div class="header-main">
+    <div class="left">
+      <img (click)="showMenuBar()" src="/assets/image/menu-ico.png" alt="">
+    </div>
+    <div class="center" [routerLink]="['/']">
+      <img src="/assets/image/top.svg" alt="">
+    </div>
+    <div class="right">
+      <div>
+        <a *ngIf="!isUserLogin && !isAdminLogin" (click)="signIn()"><img  src="/assets/image/user-ico.svg" alt=""></a>
+        <a *ngIf="isAdminLogin" [routerLink]="['/']" (click)="logOut()" class="Admin" ><img src="/assets/image/logout.png" alt=""></a>
+        <a *ngIf="isUserLogin" [routerLink]="['profile']" ><img  src="/assets/image/user-ico.svg" alt=""></a>
+      </div>
+        <div class="right-basket" [routerLink]="['checkout']">
+          <img [routerLink]="['checkout']"  src="assets/image/bascet.svg" alt="">
+          <p>({{ total }})</p>
+        </div>
+    </div>
+  </div>
+  <hr style="height: 4px;background-color: black">
+</div>
+
+<div *ngIf="!showMenu" class="menu">
+  <div class="menu-left" (click)="closeMenuBar()">
+    <div>
+      <img [routerLink]="['/']" src="/assets/image/mobil-make-up.svg" alt="">
+    </div>
+    <div style="height: 75vh;">
+      <ul class="menu_links">
+        <li><a [routerLink]="['actions']">Акції</a></li>
+        <li><a [routerLink]="['product/perfumery']">Парфумерія</a></li>
+        <li><a [routerLink]="['product/makeup']">Макіяж</a></li>
+        <li><a [routerLink]="['product/hair']">Волосся</a></li>
+        <li><a [routerLink]="['product/face']">Обличчя</a></li>
+        <li><a [routerLink]="['product/body_bath']">Тіло і ванна</a></li>
+        <li><a [routerLink]="['product/man']">Чоловікам</a></li>
+        <li><a [routerLink]="['product/accessories_appliances']">Аксесуари і техніка</a></li>
+        <li><a [routerLink]="['product/health_care']">Health & Care</a></li>
+        <li><a [routerLink]="['present']">Подарунки</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="menu-right">
+    <img src="/assets/image/close-mobil.png" alt="" (click)="closeMenuBar()">
+  </div>
+</div>

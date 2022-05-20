@@ -1,0 +1,26 @@
+<div class="product-container">
+  <div class="product">
+    <div class="left-description">
+      <h2>{{ present?.name }}</h2>
+      <h4><b>Cтать:</b> {{ present?.sex }}</h4>
+      <h4><b>Призначення:</b> {{ present?.use }}</h4>
+      <h4><b>Країна виробник:</b> {{ present?.country }}</h4>
+    </div>
+    <div class="product-img">
+      <a> <img [src]="present?.imagePath" alt=""></a>
+    </div>
+    <div class="right-description">
+      <h2>{{ present.price * present.count }} грн</h2>
+      <p>
+        <button (click)="presentCount(present, false)">-</button>
+        <input type="text" [value]="present.count">
+        <button (click)="presentCount(present, true)">+</button>
+      </p>
+      <button (click)="addBasket(present)">Купити</button>
+    </div>
+  </div>
+  <div class="bottom">
+    <h1>Опис</h1>
+    <p>{{ present?.description }}</p>
+  </div>
+</div>

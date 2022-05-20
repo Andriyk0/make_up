@@ -1,0 +1,212 @@
+.profOrder{
+  width: 100%;
+}
+.order{
+  width: 100%;
+  border-radius: 9px;
+  border: 2px solid #959292;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.first_order{
+  width: 100%;
+  display: flex;
+  margin-bottom: 10px;
+}
+.orderImg{
+  width: 30%;
+  height: 100px;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.orderDescription{
+  width: 40%;
+  text-align: left;
+  h2{
+    margin: 0;
+  }
+  h3,h4{
+    margin: 0;
+    color: gray
+  }
+}
+.orderCount{
+  width: 10%;
+}
+.orderPrice{
+  width: 20%;
+  color: gray
+}
+.second_order{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.totalPrice{
+  display: flex;
+  align-items: center;
+}
+
+
+
+.profile-container{
+  padding: 40px;
+  text-align: center;
+}
+.exitB{
+  display: none;
+}
+.profile-main{
+  border: 3px solid #f4f3f5;
+  padding: 20px;
+}
+.profile-header{
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  div{
+    display: flex;
+    h3{
+      padding: 0 25px;
+      margin: 0;
+    }
+  }
+}
+.registerForm{
+  color: #333;
+  padding: 28px 35px 41px;
+}
+.register_column{
+  width: 33.33333%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 40px 0 0;
+}
+.register_column h3{
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0 0 27px;
+}
+.register_row{
+  width: 100%;
+}
+.checkbox{
+  display: flex;
+  padding-top: 11px;
+}
+.logInBTN{
+  width: 50%;
+  display: block;
+  margin: 3px 0 0;
+  background-color: #792c9b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 14px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 2px;
+}
+.exit{
+  cursor: pointer;
+}
+.exit:hover{
+  color: purple;
+  border-bottom: 1px solid purple;
+}
+.h33{
+  display: block;
+}
+@media (max-width: 850px) {
+  .register_column{
+    width: 100%;
+    display: block;
+    padding: 0;
+    h3{
+      font-size: 28px;
+    }
+  }
+  .h33{
+    display: none;
+  }
+  .mat-form-field {
+    padding: 0;
+    font-size: 24px;
+  }
+}
+@media (max-width: 580px) {
+  .profile-container{
+    padding: 0;
+  }
+  .exit{
+    display: none;
+  }
+  .exitB{
+    display: block;
+  }
+  .registerForm{
+    padding: 0;
+  }
+  .register_row{
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .register_column{
+    font-size: 23px;
+    margin: 4px;
+  }
+  .mat-form-field{
+    height: 41px;
+    padding: 3px;
+    font-size: 13px;
+  }
+  .logInBTN{
+    width: 45%;
+    font-size: 17px;
+  }
+  .exitB{
+    width: 45%;
+    display: block;
+    margin: 3px 0 0;
+    background-color: #f50808;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 14px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 2px;
+  }
+  .first_order{
+    display: block;
+  }
+  .orderImg{
+    width: 100%;
+  }
+  .orderDescription{
+    width: 100%;
+    text-align: center;
+  }
+  .orderCount{
+    width: 100%;
+  }
+  .orderPrice{
+    width:100%;
+  }
+  .second_order{
+    display: block;
+    div{
+      text-align: center;
+    }
+  }
+  .totalPrice{
+    justify-content: center;
+    align-items: center;
+  }
+}

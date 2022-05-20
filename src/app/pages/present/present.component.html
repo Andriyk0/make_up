@@ -1,0 +1,12 @@
+<div class="product-conteiner">
+  <div class="product" *ngFor="let pres of present">
+    <div class="product-img">
+      <a [routerLink]="['/present',pres.id]"> <img [src]="pres.imagePath" alt=""></a>
+    </div>
+    <a [routerLink]="['/present',pres.id]"><h2>{{ pres.name }}</h2></a>
+    <h4 class="grey">{{ pres.use }}</h4>
+    <div style="height: 50px"></div>
+    <h2>{{ pres.price }}  ₴</h2>
+    <a><button (click)="addBasket(pres)" class="BuyBTN">Купити</button></a>
+  </div>
+</div>

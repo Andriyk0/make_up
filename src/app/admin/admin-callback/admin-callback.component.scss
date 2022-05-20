@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+tr{
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+  box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+}
+.deleteBTN{
+  background-color: #d50202;
+  border: none;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+}

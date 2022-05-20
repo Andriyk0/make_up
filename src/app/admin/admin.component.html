@@ -1,0 +1,15 @@
+<div class="admin">
+  <div class="admin-col">
+    <button class="adminBTN" [routerLink]="['category']">Категорії</button>
+    <button class="adminBTN" [routerLink]="['action']">Акції</button>
+    <button class="adminBTN" [routerLink]="['product']">Продукти</button>
+    <button class="adminBTN" [routerLink]="['present']">Подарунки</button>
+    <button class="adminBTN" [routerLink]="['order']">Замовлення</button>
+    <button class="adminBTN" [routerLink]="['callback']">Зворотній зв'язок</button>
+    <button class="exitBTN" (click)="logOut()">Вихід</button>
+  </div>
+  <div class="admin-page">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

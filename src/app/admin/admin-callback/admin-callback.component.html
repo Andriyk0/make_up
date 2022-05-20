@@ -1,0 +1,22 @@
+<div class="admin-action">
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Path</th>
+      <th>Description</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let call of callback">
+      <td class="bs">{{ call.id }}</td>
+      <td class="bs">{{ call.name }}</td>
+      <td class="bs">{{ call.phone }}</td>
+      <td class="bs">{{ call.description }}</td>
+      <td><button class="deleteBTN" (click)="deleteCallback(call)" >Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

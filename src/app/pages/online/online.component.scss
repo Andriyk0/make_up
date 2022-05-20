@@ -1,0 +1,71 @@
+.layout {
+  padding: 0 40px;
+  max-width: 1600px;
+  margin: auto;
+}
+.page-header {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin: 20px 0 48px;
+  position: relative;
+}
+.actions-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-livestream_list .action-item_banner {
+  width: 50%;
+  font-size: .65625vw;
+  line-height: 1.2;
+}
+.action-item_banner .action-item__link {
+  position: relative;
+  display: flex;
+  color: #333;
+  text-decoration: none;
+  margin: 15px;
+}
+.action-item_banner .action-item__image {
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  pointer-events: none;
+}
+.action-item_banner .action-item__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+
+  padding: min(1.6em,20px) 0 min(4.8em,60px) min(1.6em,20px);
+  color: #000;
+}
+.action-item_banner .action-item__title {
+  margin: 0 0 10px 0;
+  font-size: 1.6em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.action-item_banner .action-item__desc {
+  font-size: 1.3em;
+  font-size: min(1.3em,14px);
+  line-height: 1.2;
+}
+.action-item_banner .action-item__footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.action-item_banner .action-item__countdown {
+  padding: 5px 15px;
+  color: #fff;
+  font-size: min(1em,13px);
+  line-height: min(1.6em,20px);
+  background: #792c9b;
+}

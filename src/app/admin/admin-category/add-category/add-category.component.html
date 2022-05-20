@@ -1,0 +1,20 @@
+<div class="category-form">
+  <form class="example-form" [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="name here...">
+      <mat-error *ngIf="categoryForm.controls['name'].hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Path:</mat-label>
+      <input formControlName="path" matInput placeholder="path here...">
+      <mat-error *ngIf="categoryForm.controls['path'].hasError('required')">
+        Path is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button [disabled] = "categoryForm.invalid" mat-raised-button color="primary" type="submit">Create</button>
+    <button mat-button mat-dialog-close>Close</button>
+  </form>
+</div>

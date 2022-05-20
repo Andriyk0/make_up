@@ -1,0 +1,52 @@
+.layout {
+  padding: 0 40px;
+  max-width: 1600px;
+  margin: auto;
+  color: #333;
+  line-height: 1.7;
+  font-family: Montserrat,sans-serif;
+}
+.page-header {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin: 20px 0 48px;
+  position: relative;
+}
+.loyalty {
+  font-size: 15px;
+}
+.loyalty>div:not(.align-center) {
+  border: 2px solid #f4f3f5;
+  padding: 46px 53px 14px;
+  margin: 0 0 40px;
+}
+.loyalty>div:not(.align-center) img.right {
+  float: right;
+  margin: -4.58333vw 1.2% 0 11%;
+}
+.loyalty-wrap {
+  width: 47%;
+}
+.loyalty>div:not(.align-center) img.left {
+  float: left;
+  margin: -3.59375vw 4% 0 -3.4%;
+}
+.loyalty>div:not(.align-center) img.left+.loyalty-wrap {
+  float: right;
+  margin-top: 60px;
+}
+.align-center {
+  text-align: center;
+}
+.loyalty .button {
+  font-size: 14px;
+  padding: 14px 36px;
+  letter-spacing: 1.4px;
+  background-color: #792c9b;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}

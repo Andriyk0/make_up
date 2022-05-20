@@ -1,0 +1,22 @@
+<div class="product-conteiner">
+  <div class="product">
+    <div class="left-description">
+      <h2>{{ products?.name }}</h2>
+      <h4>Тип: {{ products?.type }}</h4>
+      <h4>{{ products?.description }}</h4>
+    </div>
+    <div class="product-img">
+      <a> <img [src]="products?.imagePath" alt=""></a>
+    </div>
+    <div class="right-description">
+      <h2>{{ products.price * products.count }} грн</h2>
+      <h3>{{ products?.size }}</h3>
+      <p>
+        <button (click)="productCount(products, false)">-</button>
+        <input type="text" [value]="products.count">
+        <button (click)="productCount(products, true)">+</button>
+      </p>
+      <button (click)="addBasket(products)">Купити</button>
+    </div>
+  </div>
+</div>

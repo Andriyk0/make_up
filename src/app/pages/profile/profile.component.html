@@ -1,0 +1,125 @@
+<div class="profile-container">
+  <h1>Особиста інформація</h1>
+  <div *ngIf="UserInfo" class="profile-main">
+    <div class="profile-header">
+      <div>
+        <div style="display: flex;flex-direction: column">
+          <h3 style="cursor: pointer">Контактна інформмація</h3>
+          <hr style="width: 100%;">
+        </div>
+        <h3 style="cursor: pointer" (click)="ShowUserInfo()">Історія замовлень</h3>
+      </div>
+      <h3 class="exit" (click)="logOut()">Вихід</h3>
+    </div>
+    <hr style="border:1px solid #b4b2b2">
+    <div class="profile">
+      <form class="registerForm" [formGroup]="saveUserForm" (ngSubmit)="updateInfo()">
+        <div class="register_column">
+          <h3>Особисті дані</h3>
+          <div class="register_row" >
+            <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+              <mat-label>Ваше ім'я</mat-label>
+              <input type="text" formControlName="firstName" matInput >
+              <mat-error *ngIf="saveUserForm.controls['firstName'].hasError('required')">
+                Ім'я введено <strong>некоректно</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="register_row">
+            <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+              <mat-label>Ваше фамілія</mat-label>
+              <input type="text" formControlName="secondName" matInput >
+              <mat-error *ngIf="saveUserForm.controls['secondName'].hasError('required')">
+                Фамілія введено <strong>некоректно</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="register_row">
+            <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+              <mat-label>Дата народження</mat-label>
+              <input matInput mask="d0/M0/0000" [dropSpecialCharacters]="false" placeholder="dd/mm/yyyy" formControlName="dateOfBirth">
+              <mat-error *ngIf="saveUserForm.controls['dateOfBirth'].hasError('required')">
+                Дату народження введено <strong>некоректно</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="register_column">
+          <h3 class="h33">&nbsp;</h3>
+          <div class="register_row">
+            <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+              <mat-label>Телефон</mat-label>
+              <input class="callback_name" formControlName="phone" matInput [dropSpecialCharacters]="false" prefix="+38" [mask]="'(000) 00-00-000'"  value="">
+              <mat-error *ngIf="saveUserForm.controls['phone'].hasError('required')">
+                Телефон введено <strong>некоректно</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="register_row">
+            <mat-form-field style="width: 100%" class="example-full-width" appearance="outline">
+              <mat-label>Е-mail</mat-label>
+              <input [textMask]="{mask: emailMask}" formControlName="email" matInput placeholder="example@domain.com">
+              <mat-error *ngIf="saveUserForm.controls['email'].hasError('required')">
+                E-mail введено <strong>некоректно</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="register_row">
+            <button class="logInBTN" [disabled] = "saveUserForm.invalid" (click)="updateInfo()" type="submit">Зберегти</button>
+            <button class="exitB" (click)="logOut()" type="submit">Вихід</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="!UserInfo" class="profile-main">
+    <div class="profile-header">
+      <div>
+        <h3 style="cursor: pointer" (click)="closeUserInfo()">Контактна інформмація</h3>
+        <div style="display: flex;flex-direction: column">
+          <h3 style="cursor: pointer">Історія замовлень</h3>
+          <hr style="width: 100%;">
+        </div>
+      </div>
+      <h3 class="exit" (click)="logOut()">Вихід</h3>
+    </div>
+    <hr style="border:1px solid #b4b2b2">
+    <div class="profOrder">
+      <h2 style="color: gray">Ваші замовлення</h2>
+      <div class="order" *ngFor="let order of orderArray">
+        <div class="first_order" *ngFor="let one of order.products ">
+          <div class="orderImg">
+            <img  src="{{ one.imagePath }}" alt="">
+          </div>
+          <div class="orderDescription">
+            <h2>{{ one.name }}</h2>
+            <h3>{{ one.type }}</h3>
+            <h4>{{ one.size}}</h4>
+          </div>
+          <div class="orderCount">
+            <h3>{{ one.count }} шт</h3>
+          </div>
+          <div class="orderPrice">
+            <h2>{{ one.price }} ₴</h2>
+          </div>
+        </div>
+        <hr>
+        <div class="second_order">
+          <div>
+            <p style="margin: 0">{{ order.phone }}</p>
+            <h3>{{ order.city }}, {{ order.street }}, {{ order.house }}</h3>
+          </div>
+          <div class="totalPrice">
+            <h3>До оплати : </h3> <h2 style="font-style: italic">{{ order.totalPrice }} ₴</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

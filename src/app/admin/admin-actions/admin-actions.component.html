@@ -1,0 +1,31 @@
+<button mat-raised-button (click)="openDialog()">Create new action</button>
+
+  <div class="admin-action">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Attention</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let action of adminActions">
+          <td class="bs">{{ action.id }}</td>
+          <td class="bs">{{ action.name }}</td>
+          <td class="bs">
+            <img width="100px" height="50px" [src]="action.imagePath" alt="">
+          </td>
+          <td class="bs">{{ action.description | slice: 0:20 }} ...</td>
+          <td class="bs">{{ action.attention | slice:0:20 }} ...</td>
+          <td><button class="editBTN" (click)="editAdminAction(action)">Edit</button></td>
+          <td><button class="deleteBTN" (click)="deleteAdminAction(action)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

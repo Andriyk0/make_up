@@ -1,0 +1,68 @@
+<input class="search" type="search"  [(ngModel)]="searchOrder" matInput placeholder="search order...">
+
+<table mat-table [dataSource]="dataSource | searchOrder:searchOrder" multiTemplateDataRows class="mat-elevation-z8">
+
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Імя</th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} {{ element.secondName }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Телефон </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Адреса </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}},{{ element.street }},{{ element.house }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalPrice">
+        <th mat-header-cell *matHeaderCellDef> Загальна вартість </th>
+        <td mat-cell *matCellDef="let element"> {{element.totalPrice}} грн </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element" style="display: flex; align-items: center;">
+          <button (click)="deleteOrder(element)" mat-raised-button color="accent">Delete</button>
+        </td>
+      </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+           *ngFor="let el of element.products">
+        <div class="example-element-diagram">
+          <img class="imgOrder" src="{{el.imagePath}}" alt="">
+        </div>
+        <div class="example-element-description">
+          <div>
+           <h2>{{el.name}}</h2>
+           <p>{{ el.type }}</p>
+            <p>{{ el.size }}</p>
+          </div>
+          <div>
+            <h3>К-сть : {{ el.count }} шт</h3>
+            <h2>Ціна : {{ el.price }}</h2>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

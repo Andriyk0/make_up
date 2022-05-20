@@ -1,0 +1,12 @@
+<div class="action-conteiner">
+  <div class="action" *ngFor="let action of userAction">
+    <a [routerLink]="['/actions', action.id]">
+      <img [src]="action.imagePath" alt="" width="100%" height="100%">
+      <h2>{{ action.name }}</h2>
+      <h4>{{ action.description | slice: 0:150 }}</h4>
+      <div class="time-out">
+        <p>До кінця залишилось</p>
+      </div>
+    </a>
+  </div>
+</div>
